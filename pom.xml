@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>io.opentelemetry.instrumentation</groupId>
 			<artifactId>opentelemetry-spring-starter</artifactId>
-			<version>1.0.1-alpha</version>
+			<version>1.0.0-alpha</version>
 		</dependency>
 
 
@@ -68,12 +68,14 @@
 		<!--			<artifactId>opentelemetry-exporters-logging</artifactId>-->
 		<!--			<version>0.9.1</version>-->
 		<!--		</dependency>-->
+
+
 		<!-- To solve ClassNotFoundException: io.opentelemetry.context.propagation.TextMapPropagator-->
-<!--		<dependency>-->
-<!--			<groupId>io.opentelemetry</groupId>-->
-<!--			<artifactId>opentelemetry-context-prop</artifactId>-->
-<!--			<version>1.0.1-alpha</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-context-prop</artifactId>
+			<version>0.9.1</version>
+		</dependency>
 
 
 	</dependencies>

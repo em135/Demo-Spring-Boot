@@ -17,11 +17,12 @@ ENV STAR_COLOR ${star_color:-black}
 
 EXPOSE 9080
 
-RUN wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent-all.jar
-
+RUN wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.0.1/opentelemetry-javaagent-all.jar
+#"-Dotel.traces.exporter=none", \
 CMD ["java", "-javaagent:opentelemetry-javaagent-all.jar", \
 "-Dotel.resource.attributes=service.name=demo", \
-"-Dotel.traces.exporter=none", \
+"-Dotel.traces.exporter=zipkin", \
+"-Dotel.exporter.zipkin.endpoint=http://otel-collector.istio-system:9411/api/v1/spans", \
 "-Dotel.metrics.exporter=none", \
 "-Dotel.propagators=b3multi", \
 "-Dotel.javaagent.debug=true", \

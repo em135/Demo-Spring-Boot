@@ -34,49 +34,29 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- OTEL -->
 
-<!--		<dependency>-->
-<!--			<groupId>io.opentelemetry</groupId>-->
-<!--			<artifactId>opentelemetry-api</artifactId>-->
-<!--			<version>1.0.1</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>io.opentelemetry</groupId>-->
-<!--			<artifactId>opentelemetry-extension-annotations</artifactId>-->
-<!--			<version>1.0.1</version>-->
-<!--		</dependency>-->
+
 <!--		<dependency>-->
 <!--			<groupId>io.opentelemetry.instrumentation</groupId>-->
 <!--			<artifactId>opentelemetry-spring-boot-autoconfigure</artifactId>-->
-<!--			<version>1.0.1-alpha</version>-->
+<!--			<version>0.16.0</version>-->
 <!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>io.opentelemetry</groupId>-->
-<!--			<artifactId>opentelemetry-sdk</artifactId>-->
-<!--			<version>1.0.1</version>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>io.opentelemetry.instrumentation</groupId>
-			<artifactId>opentelemetry-spring-starter</artifactId>
-			<version>1.0.0-alpha</version>
-		</dependency>
-
-
-
-		<!--		<dependency>-->
-		<!--			<groupId>io.opentelemetry</groupId>-->
-		<!--			<artifactId>opentelemetry-exporters-logging</artifactId>-->
-		<!--			<version>0.9.1</version>-->
-		<!--		</dependency>-->
-
-
-		<!-- To solve ClassNotFoundException: io.opentelemetry.context.propagation.TextMapPropagator-->
 		<dependency>
 			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-context-prop</artifactId>
-			<version>0.9.1</version>
+			<artifactId>opentelemetry-api</artifactId>
+			<version>1.0.1</version>
 		</dependency>
-
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporter-logging</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-context</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 
 	</dependencies>
 

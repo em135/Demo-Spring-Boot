@@ -1,23 +1,13 @@
 package com.example.demo;
 
+import io.opentelemetry.api.trace.Span;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpRequestExecution;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import io.opentelemetry.api.trace.Span;
-
-import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -103,21 +93,22 @@ public class ReviewController {
     }
 
     @GetMapping("/reviews/{productId}")
-    public String bookReviewsById(@PathVariable("productId") int productId) {
+    public String bookReviewsById(@PathVariable("productId") int productId, @RequestHeader Map<String, String> headers) {
+        System.out.println("PRINTING HEADERS");
+        headers.forEach((key, value) -> {
+            System.out.println("key:" + key + " and value:" + value);
+        });
+
         int starsReviewer1 = -1;
         int starsReviewer2 = -1;
         Span span = Span.current();
 
         String spanId = span.getSpanContext().getSpanId();
         String traceId = span.getSpanContext().getTraceId();
-
-        System.out.println("SPANID:" + spanId);
-        System.out.println("TRACEID" + traceId);
-
-        List<ClientHttpRequestInterceptor> interceptors = restTemplate.getInterceptors();
-        System.out.println(interceptors.get(0));
-        System.out.println(interceptors);
-        System.out.println(interceptors.size());
+        System.out.println("SPANID controller:" + spanId);
+        System.out.println("TRACEID controller:" + traceId);
+        span.getSpanContext().getTraceState().asMap().forEach((key, value) -> System.out.println("key: " + key + " value: " + value));
+        System.out.println("Span controller: " +  span.toString());
 
         if (ratings_enabled) { //ratings_enabled
             RatingList ratingsResponse = getRatings(String.valueOf(productId));
